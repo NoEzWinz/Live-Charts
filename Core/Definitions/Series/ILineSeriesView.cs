@@ -56,5 +56,12 @@ namespace LiveCharts.Definitions.Series
         /// <param name="atIndex">At index.</param>
         /// <param name="location">The location.</param>
         void EndSegment(int atIndex, CorePoint location);
+        /// <summary>
+        /// Gets or sets whether only the lasst point drwn should be shown
+        /// </summary>
+        /// <value>
+        /// <c>true</c> If this instance should show only the last point; otherwise, <c>false</c>.
+        /// </value>
+        bool ShowLastPointOnly { get; set; }
     }
 }

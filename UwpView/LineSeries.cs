@@ -168,6 +168,21 @@ namespace LiveCharts.Uwp
             set { SetValue(AreaLimitProperty, value); }
         }
 
+        /// <summary>
+        /// Show only the last point drawn
+        /// </summary>
+        public static readonly DependencyProperty ShowLastPointOnlyProperty = DependencyProperty.Register(
+            "ShowLastPointOnly", typeof(bool), typeof(LineSeries),
+            new PropertyMetadata(default(bool), CallChartUpdater()));
+        /// <summary>
+        /// Gets or sets the whether only the lasst point drawn shoul dbe shown
+        /// </summary>
+        public bool ShowLastPointOnly
+        {
+            get { return (bool)GetValue(ShowLastPointOnlyProperty); }
+            set { SetValue(ShowLastPointOnlyProperty, value); }
+        }
+
         #endregion
 
         #region Overridden Methods

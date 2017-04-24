@@ -40,6 +40,11 @@ namespace LiveCharts.Wpf.Points
             throw new NotImplementedException();
         }
 
+        public virtual void DrawOrMove(ChartPoint previousDrawn, ChartPoint current, int index, ChartCore chart, bool erasePrevious)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual void RemoveFromView(ChartCore chart)
         {
             throw new NotImplementedException();

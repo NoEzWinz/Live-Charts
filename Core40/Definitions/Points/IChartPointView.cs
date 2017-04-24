@@ -54,6 +54,15 @@ namespace LiveCharts.Definitions.Points
         /// <param name="chart">The chart.</param>
         void DrawOrMove(ChartPoint previousDrawn, ChartPoint current, int index, ChartCore chart);
         /// <summary>
+        /// Draws the or move.
+        /// </summary>
+        /// <param name="previousDrawn">The previous drawn.</param>
+        /// <param name="current">The current.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="chart">The chart.</param>
+        ///  <param name="erasePrevious">Remove any preceeding point</param>
+        void DrawOrMove(ChartPoint previousDrawn, ChartPoint current, int index, ChartCore chart, bool erasePrevious);
+        /// <summary>
         /// Removes from view.
         /// </summary>
         /// <param name="chart">The chart.</param>

@@ -158,7 +158,9 @@ namespace LiveCharts.SeriesAlgorithms
                             Point3 = new CorePoint(p2.X, p2.Y)
                         };
 
-                    chartPoint.View.DrawOrMove(previousDrawn, chartPoint, segmentPosition, Chart);
+                    //chartPoint.View.DrawOrMove(previousDrawn, chartPoint, segmentPosition, Chart);
+                    chartPoint.View.DrawOrMove(previousDrawn, chartPoint, segmentPosition, Chart, lineView.ShowLastPointOnly);
+
                     segmentPosition++;
 
                     previousDrawn = chartPoint.View.IsNew
