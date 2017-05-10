@@ -1,0 +1,4 @@
+Chart3D <-- LiveCharts.Wpf.Charts.Base.Chart
+ChartCore3D <-- LiveCharts.Charts.ChartCore
+BarSeries3D <-- LiveCharts.Wpf.Series
+BarAlgorithm3D <-- LiveCharts.SeriesAlgorithm

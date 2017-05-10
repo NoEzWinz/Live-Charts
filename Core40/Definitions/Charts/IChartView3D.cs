@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,29 +20,35 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-namespace LiveCharts
+using System;
+using System.Collections.Generic;
+using LiveCharts.Charts;
+using LiveCharts.Definitions.Series;
+using LiveCharts.Dtos;
+using LiveCharts.Events;
+
+namespace LiveCharts.Definitions.Charts
 {
     /// <summary>
-    /// Cartesian Axis orientation
+    /// 
     /// </summary>
-    public enum AxisOrientation
+    public interface IChartView3D : IChartView
     {
         /// <summary>
-        /// Unknown orientation
+        /// Gets the model.
         /// </summary>
-        None,
-        /// <summary>
-        /// Horizontal (X)
-        /// </summary>
-        X,
-        /// <summary>
-        /// Vertical (Y)
-        /// </summary>
-        Y,
-        /// <summary>
-        /// Depth (Z)
-        /// </summary>
-        Z
-    }
+        /// <value>
+        /// The model.
+        /// </value>
+        new  ChartCore3D  Model { get; }
 
+
+        /// <summary>
+        /// Sets the depth of the draw margin.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        void SetDrawMarginDepth(double value);
+
+
+    }
 }

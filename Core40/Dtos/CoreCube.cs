@@ -20,29 +20,61 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-namespace LiveCharts
-{
-    /// <summary>
-    /// Cartesian Axis orientation
-    /// </summary>
-    public enum AxisOrientation
-    {
-        /// <summary>
-        /// Unknown orientation
-        /// </summary>
-        None,
-        /// <summary>
-        /// Horizontal (X)
-        /// </summary>
-        X,
-        /// <summary>
-        /// Vertical (Y)
-        /// </summary>
-        Y,
-        /// <summary>
-        /// Depth (Z)
-        /// </summary>
-        Z
-    }
+using System;
 
+namespace LiveCharts.Dtos
+{
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CoreCube : CoreRectangle
+    {
+
+        private double _depth;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CoreCube"/> class.
+        /// </summary>
+        public CoreCube()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CoreCube"/> class.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="top">The top.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="depth">The height.</param>
+        public CoreCube(double left, double top, double width, double height, double depth) : base(left,top,width,height)
+        {
+
+            Depth = depth;
+        }
+
+        /// <summary>
+        /// Occurs when [set depth].
+        /// </summary>
+        public event Action<double> SetDepth;
+
+        /// <summary>
+        /// Gets or sets the depth.
+        /// </summary>
+        /// <value>
+        /// The left.
+        /// </value>
+        public double Depth
+        {
+            get { return _depth; }
+            set
+            {
+                _depth = value;
+                if (SetDepth != null) SetDepth.Invoke(value);
+            }
+        }
+
+    }
 }

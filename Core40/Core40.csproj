@@ -66,6 +66,7 @@
     <Compile Include="Charting.cs" />
     <Compile Include="ChartPoint.cs" />
     <Compile Include="Charts\CartesianChartCore.cs" />
+    <Compile Include="Charts\ChartCore3D.cs" />
     <Compile Include="Charts\ChartCore.cs" />
     <Compile Include="Charts\PieChartCore.cs" />
     <Compile Include="ChartUpdater.cs" />
@@ -82,8 +83,11 @@
     <Compile Include="DateAxisCore.cs" />
     <Compile Include="DateAxisWindow.cs" />
     <Compile Include="Definitions\Charts\IAxisWindow.cs" />
+    <Compile Include="Definitions\Charts\IChartView3D.cs" />
     <Compile Include="Definitions\Charts\IWindowAxisView.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="Dtos\CoreCube.cs" />
+    <Compile Include="Dtos\CoreSize3D.cs" />
     <Compile Include="WindowAxisCore.cs" />
     <Compile Include="DateAxisWindows.cs" />
     <Compile Include="DateSeparatorElementCore.cs" />

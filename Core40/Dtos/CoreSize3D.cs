@@ -20,29 +20,37 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-namespace LiveCharts
+namespace LiveCharts.Dtos
 {
     /// <summary>
-    /// Cartesian Axis orientation
+    /// 
     /// </summary>
-    public enum AxisOrientation
+    public struct CoreSize
     {
         /// <summary>
-        /// Unknown orientation
+        /// Initializes a new instance of the <see cref="CoreSize"/> struct.
         /// </summary>
-        None,
-        /// <summary>
-        /// Horizontal (X)
-        /// </summary>
-        X,
-        /// <summary>
-        /// Vertical (Y)
-        /// </summary>
-        Y,
-        /// <summary>
-        /// Depth (Z)
-        /// </summary>
-        Z
-    }
+        /// <param name="width">The width.</param>
+        /// <param name="heigth">The heigth.</param>
+        public CoreSize(double width, double heigth) : this()
+        {
+            Width = width;
+            Height = heigth;
+        }
 
+        /// <summary>
+        /// Gets or sets the width.
+        /// </summary>
+        /// <value>
+        /// The width.
+        /// </value>
+        public double Width { get; set; }
+        /// <summary>
+        /// Gets or sets the height.
+        /// </summary>
+        /// <value>
+        /// The height.
+        /// </value>
+        public double Height { get; set; }
+    }
 }
