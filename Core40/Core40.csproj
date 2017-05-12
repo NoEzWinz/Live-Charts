@@ -87,7 +87,6 @@
     <Compile Include="Definitions\Charts\IWindowAxisView.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Dtos\CoreCube.cs" />
-    <Compile Include="Dtos\CoreSize3D.cs" />
     <Compile Include="WindowAxisCore.cs" />
     <Compile Include="DateAxisWindows.cs" />
     <Compile Include="DateSeparatorElementCore.cs" />

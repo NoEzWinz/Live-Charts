@@ -32,11 +32,26 @@ namespace LiveCharts.Dtos
         /// </summary>
         /// <param name="width">The width.</param>
         /// <param name="heigth">The heigth.</param>
-        public CoreSize(double width, double heigth) : this()
+        public CoreSize(double width, double heigth) : this(width, heigth, 0)
+        {
+           // Width = width;
+           // Height = heigth;
+           
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CoreSize"/> struct.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="heigth">The heigth.</param>
+        /// <param name="depth">The depth</param>
+        public CoreSize(double width, double heigth,double depth) : this()
         {
             Width = width;
             Height = heigth;
+            Depth = depth;
         }
+
 
         /// <summary>
         /// Gets or sets the width.
@@ -52,5 +67,12 @@ namespace LiveCharts.Dtos
         /// The height.
         /// </value>
         public double Height { get; set; }
+        /// <summary>
+        /// Gets or sets the depth.
+        /// </summary>
+        /// <value>
+        /// The height.
+        /// </value>
+        public double Depth { get; set; }
     }
 }

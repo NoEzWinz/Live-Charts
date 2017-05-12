@@ -45,7 +45,7 @@ namespace LiveCharts.Charts
         {
             //View = view;
             //Updater = updater;
-            //DrawMargin = new CoreCube();
+            DrawMargin = new CoreCube();
             //DrawMargin.SetHeight += view.SetDrawMarginHeight;
             //DrawMargin.SetWidth += view.SetDrawMarginWidth;
             //DrawMargin.SetTop += view.SetDrawMarginTop;
@@ -107,14 +107,15 @@ namespace LiveCharts.Charts
         /// <value>
         /// The size of the control.
         /// </value>
-        //public CoreSize ControlSize { get; set; }
+        //public new CoreSize ControlSize { get; set; }
+
         /// <summary>
         /// Gets or sets the draw margin.
         /// </summary>
         /// <value>
         /// The draw margin.
         /// </value>
-        //public CoreCube DrawMargin { get; set; }
+        public new CoreCube DrawMargin { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this instance has unitary points.
         /// </summary>
@@ -246,7 +247,7 @@ namespace LiveCharts.Charts
                     AxisOrientation.Z);
             }
         }
-
+/*
         /// <summary>
         /// Runs the specialized chart components.
         /// </summary>
@@ -254,18 +255,18 @@ namespace LiveCharts.Charts
         {
             
         }
-
+*/
         /// <summary>
         /// Calculates the components and margin.
         /// </summary>
-        public  void CalculateComponentsAndMargin()
+        public new void  CalculateComponentsAndMargin()
         {
-            var curSize = new CoreRectangle(0, 0, ControlSize.Width, ControlSize.Height);
+            var curSize = new CoreCube(0, 0, ControlSize.Width, ControlSize.Height, ControlSize.Depth);
 
-            curSize = PlaceLegend(curSize);
+            curSize = (CoreCube) PlaceLegend(curSize);
 
             const double padding = 4;
-
+            
             for (int index = 0; index < AxisY.Count; index++)
             {
                 var ax = AxisY[index];
@@ -396,7 +397,7 @@ namespace LiveCharts.Charts
         /// <param name="drawMargin">The draw margin.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-       /* public CoreRectangle PlaceLegend(CoreRectangle drawMargin)
+       public new CoreRectangle PlaceLegend(CoreRectangle drawMargin)
         {
             var legendSize = View.LoadLegend();
 
@@ -433,7 +434,7 @@ namespace LiveCharts.Charts
 
             return drawMargin;
         }
-       
+  /*     
         /// <summary>
         /// Zooms the in.
         /// </summary>
@@ -598,9 +599,10 @@ namespace LiveCharts.Charts
                 }
             }
         }
-
+*/
         #endregion
 
+/*
         #region Protected
 
         /// <summary>
@@ -734,8 +736,9 @@ namespace LiveCharts.Charts
                 }
             }
         }
-        #endregion
 
+        #endregion
+  */
         #region Privates
         private static void SetAxisLimits(AxisCore ax, IList<ISeriesView> series, AxisOrientation orientation)
         {
@@ -775,7 +778,7 @@ namespace LiveCharts.Charts
 
             ax.MaxPointRadius = boundries[2];
         }
-         */
+         
         #endregion
     }
 }
