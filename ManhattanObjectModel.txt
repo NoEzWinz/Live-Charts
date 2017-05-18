@@ -1,4 +1,24 @@
-Chart3D <-- LiveCharts.Wpf.Charts.Base.Chart
+Modeled after Cartesian Chart
+
+Current objects
+
+LiveCharts.Configurations.CartesianMapper <-- LiveCharts.Configurations.IPointEvaluator
+LiveCharts.Charts.CartesianChartCore <--  LiveCharts.Charts.ChartCore.ChartCore
+LiveCharts.Definitions.Charts.ICartesianChart <-- LiveCharts.Definitions.Charts.IChartView
+LiveCharts.Definitions.Charts.ICartesianVisualElement
+LiveCharts.Definitions.Series.ICartesianSeries
+
+
+
+--------
+New objects
+
+Use ColumnSeries as basis for ManahattanSeries (Column3DSeries)
+
+LiveCharts.Wpf.Charts.Base.Chart3D <-- UserControl, LiveCharts.Definitions.Charts.IChartView3D 
 ChartCore3D <-- LiveCharts.Charts.ChartCore
+ManhattanChartCore <-- LiveCharts.Charts.ChartCore3D
+IManhattanChart <-- LiveCharts.Definitions.Charts.IChartView (do we need an IChartView3D???)
+LiveCharts.Definitions.Charts.IManhattanVisualElement				<-- LiveCharts.Definitions.Charts.IManhattanVisualElement.cs
 BarSeries3D <-- LiveCharts.Wpf.Series
 BarAlgorithm3D <-- LiveCharts.SeriesAlgorithm
