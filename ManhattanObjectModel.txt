@@ -13,6 +13,11 @@ LiveCharts.Definitions.Series.ICartesianSeries
 --------
 New objects
 
+LiveCharts.Wpf.CartesianChart3D - modeled after LiveCharts.Wpf.CartesianChart
+LiveCharts.Wpf.Charts.Base.Chart3D - modeled after  LiveCharts.Wpf.Charts.Base.Chart
+LiveCharts.Definitions.Charts.IChartView3D -- inherit or new??? from IChartView  <-- Left off HERE
+LiveCharts.Wpf.AxesCollection3D -- inherit or new??? from AxesCollection
+
 Use ColumnSeries as basis for ManahattanSeries (Column3DSeries)
 
 LiveCharts.Wpf.Charts.Base.Chart3D <-- UserControl, LiveCharts.Definitions.Charts.IChartView3D 

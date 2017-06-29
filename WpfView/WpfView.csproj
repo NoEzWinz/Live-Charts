@@ -68,7 +68,10 @@
   <ItemGroup>
     <Compile Include="AngularGauge.cs" />
     <Compile Include="AngularSection.cs" />
+    <Compile Include="AxesCollection3D.cs" />
     <Compile Include="AxisWindowCollection.cs" />
+    <Compile Include="CartesianChart3D.cs" />
+    <Compile Include="Charts\Base\Chart3D.cs" />
     <Compile Include="ColorsCollection.cs" />
     <Compile Include="Components\DefaultXamlReader.cs" />
     <Compile Include="Components\IFondeable.cs" />
