@@ -20,53 +20,45 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using LiveCharts.Charts;
+using LiveCharts.Definitions.Charts;
+using LiveCharts.Definitions.Points;
 using LiveCharts.Definitions.Series;
 using LiveCharts.Dtos;
-using LiveCharts.Events;
 
-namespace LiveCharts.Definitions.Charts
+namespace LiveCharts
 {
     /// <summary>
-    /// 
+    /// Defines a point in the chart
     /// </summary>
-    public interface IChartView3D : IChartView
+    public class ChartPoint3D : ChartPoint
     {
+
+        #region Cartesian 
+
         /// <summary>
-        /// Gets the model.
+        /// Gets the Z point value
+        /// </summary>
+        public double Z { get; internal set; }
+
+        #endregion
+
+
+        /// <summary>
+        /// Gets the series where the point belongs to
+        /// </summary>
+        public new ISeriesView3D SeriesView { get; internal set; }
+
+
+
+
+        /// <summary>
+        /// Gets the chart view.
         /// </summary>
         /// <value>
-        /// The model.
+        /// The chart view.
         /// </value>
-        new  ChartCore3D  Model { get; }
+        public new IChartView3D ChartView { get { return SeriesView.Model.Chart.View; } }
 
-
-        /// <summary>
-        /// Sets the depth of the draw margin.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        void SetDrawMarginDepth(double value);
-
-        /// <summary>
-        /// Maps the x axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapXAxes(ChartCore3D chart);
-        /// <summary>
-        /// Maps the y axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapYAxes(ChartCore3D chart);
-        /// <summary>
-        /// Maps the z axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapZAxes(ChartCore3D chart);
 
     }
 }

@@ -38,23 +38,49 @@ namespace LiveCharts
         void Initialize(ISeriesView seriesView);
 
         /// <summary>
+        /// Forces values to calculate max, min and index data.
+        /// </summary>
+        void Initialize(ISeriesView3D seriesView);
+
+        /// <summary>
         /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
         /// </summary>
         /// <param name="seriesView">The series view</param>
         /// <returns></returns>
         IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
+
+        /// <summary>
+        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// </summary>
+        /// <param name="seriesView">The series view</param>
+        /// <returns></returns>
+        IEnumerable<ChartPoint3D> GetPoints(ISeriesView3D seriesView);
+
         /// <summary>
         /// Initializes the garbage collector
         /// </summary>
         void InitializeStep(ISeriesView seriesView);
         /// <summary>
+        /// Initializes the garbage collector
+        /// </summary>
+        void InitializeStep(ISeriesView3D seriesView);
+        /// <summary>
         /// Removes all unnecessary points from the view
         /// </summary>
         void CollectGarbage(ISeriesView seriesView);
+        /// <summary>
+        /// Removes all unnecessary points from the view
+        /// </summary>
+        void CollectGarbage(ISeriesView3D seriesView);
 
         /// <summary>
         /// Gets series that owns the values
         /// </summary>
         PointTracker GetTracker(ISeriesView view);
+
+        /// <summary>
+        /// Gets series that owns the values
+        /// </summary>
+        PointTracker GetTracker(ISeriesView3D view);
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="BarLabelPosition.cs" />
     <Compile Include="ChartFunctions.cs" />
     <Compile Include="Charting.cs" />
+    <Compile Include="ChartPoint3D.cs" />
     <Compile Include="ChartPoint.cs" />
     <Compile Include="Charts\CartesianChartCore.cs" />
     <Compile Include="Charts\ChartCore3D.cs" />
@@ -85,8 +86,11 @@
     <Compile Include="Definitions\Charts\IAxisWindow.cs" />
     <Compile Include="Definitions\Charts\IChartView3D.cs" />
     <Compile Include="Definitions\Charts\IWindowAxisView.cs" />
+    <Compile Include="Definitions\Points\IChartPointView3D.cs" />
+    <Compile Include="Definitions\Series\ISeriesView3D.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Dtos\CoreCube.cs" />
+    <Compile Include="SeriesAlgorithm3D.cs" />
     <Compile Include="WindowAxisCore.cs" />
     <Compile Include="DateAxisWindows.cs" />
     <Compile Include="DateSeparatorElementCore.cs" />

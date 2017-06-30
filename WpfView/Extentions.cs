@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media.Media3D;
 using LiveCharts.Definitions.Series;
 using LiveCharts.Dtos;
 using LiveCharts.Wpf.Charts.Base;
@@ -38,6 +39,38 @@ namespace LiveCharts.Wpf
         }
 
         /// <summary>
+        /// Converts a point at screen to chart values scale
+        /// </summary>
+        /// <param name="chart">Target chart</param>
+        /// <param name="screenPoint">point in screen</param>
+        /// <param name="axisX">axis x index</param>
+        /// <param name="axisY">axis y index</param>
+        /// <param name="axisZ">axis y index</param>
+        /// <returns></returns>
+        public static Point3D ConvertToChartValues(this Chart3D chart, Point3D screenPoint, int axisX = 0, int axisY = 0, int axisZ = 0)
+        {
+            if (chart.Model == null || chart.AxisX == null || chart.AxisX.Any(x => x.Model == null)) return new Point3D();
+
+            var uw = new CorePoint(
+                chart.AxisX[axisX].Model.EvaluatesUnitWidth
+                    ? ChartFunctions.GetUnitWidth(AxisOrientation.X, chart.Model, axisX)/2
+                    : 0,
+                chart.AxisY[axisY].Model.EvaluatesUnitWidth
+                    ? ChartFunctions.GetUnitWidth(AxisOrientation.Y, chart.Model, axisY)/2
+                    : 0,
+                chart.AxisZ[axisZ].Model.EvaluatesUnitWidth
+                    ? ChartFunctions.GetUnitWidth(AxisOrientation.Z, chart.Model, axisZ)/2
+                    : 0);
+            ;
+
+
+            return new Point3D(
+                ChartFunctions.FromPlotArea(screenPoint.X - uw.X, AxisOrientation.X, chart.Model, axisX),
+                ChartFunctions.FromPlotArea(screenPoint.Y - uw.Y, AxisOrientation.Y, chart.Model, axisY), 
+                ChartFunctions.FromPlotArea(screenPoint.Z - uw.Z, AxisOrientation.Z, chart.Model, axisZ));
+        }
+
+        /// <summary>
         /// Converts a chart values pair to pixels
         /// </summary>
         /// <param name="chart">Target chart</param>
@@ -63,6 +96,35 @@ namespace LiveCharts.Wpf
         }
 
         /// <summary>
+        /// Converts a chart values pair to pixels
+        /// </summary>
+        /// <param name="chart">Target chart</param>
+        /// <param name="chartPoint">point in screen</param>
+        /// <param name="axisX">axis x index</param>
+        /// <param name="axisY">axis y index</param>
+        /// <param name="axisZ">axis y index</param>
+        /// <returns></returns>
+        public static Point3D ConvertToPixels(this Chart3D chart, Point3D chartPoint, int axisX = 0, int axisY = 0, int axisZ = 0)
+        {
+            if (chart.Model == null || chart.AxisX.Any(x => x.Model == null)) return new Point3D();
+
+            var uw = new CorePoint(
+                chart.AxisX[axisX].Model.EvaluatesUnitWidth
+                    ? ChartFunctions.GetUnitWidth(AxisOrientation.X, chart.Model, axisX) / 2
+                    : 0,
+                chart.AxisY[axisY].Model.EvaluatesUnitWidth
+                    ? ChartFunctions.GetUnitWidth(AxisOrientation.Y, chart.Model, axisY) / 2
+                    : 0,
+                chart.AxisZ[axisZ].Model.EvaluatesUnitWidth
+                    ? ChartFunctions.GetUnitWidth(AxisOrientation.Z, chart.Model, axisZ) / 2
+                    : 0);
+
+            return new Point3D(
+                ChartFunctions.ToPlotArea(chartPoint.X, AxisOrientation.X, chart.Model, axisX) + uw.X,
+                ChartFunctions.ToPlotArea(chartPoint.Y, AxisOrientation.Y, chart.Model, axisY) + uw.Y,
+                ChartFunctions.ToPlotArea(chartPoint.Z, AxisOrientation.Z, chart.Model, axisZ) + uw.Z);
+        }
+        /// <summary>
         /// Converts a ChartPoint to Point
         /// </summary>
         /// <param name="chartPoint">point to convert</param>
@@ -70,6 +132,16 @@ namespace LiveCharts.Wpf
         public static Point AsPoint(this ChartPoint chartPoint)
         {
             return new Point(chartPoint.X, chartPoint.Y);
+        }
+
+        /// <summary>
+        /// Converts a ChartPoint to Point3D
+        /// </summary>
+        /// <param name="chartPoint">point to convert</param>
+        /// <returns></returns>
+        public static Point3D AsPoint(this ChartPoint3D chartPoint)
+        {
+            return new Point3D(chartPoint.X, chartPoint.Y, chartPoint.Z);
         }
 
         /// <summary>

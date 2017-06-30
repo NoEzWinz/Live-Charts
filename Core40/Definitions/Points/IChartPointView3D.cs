@@ -20,53 +20,48 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System;
-using System.Collections.Generic;
 using LiveCharts.Charts;
-using LiveCharts.Definitions.Series;
 using LiveCharts.Dtos;
-using LiveCharts.Events;
 
-namespace LiveCharts.Definitions.Charts
+namespace LiveCharts.Definitions.Points
 {
+
     /// <summary>
     /// 
     /// </summary>
-    public interface IChartView3D : IChartView
+    public interface IChartPointView3D: IChartPointView
     {
+
         /// <summary>
-        /// Gets the model.
+        /// Gets the valid area.
         /// </summary>
         /// <value>
-        /// The model.
+        /// The valid area.
         /// </value>
-        new  ChartCore3D  Model { get; }
-
-
+       new  CoreCube ValidArea { get; }
         /// <summary>
-        /// Sets the depth of the draw margin.
+        /// Draws the or move.
         /// </summary>
-        /// <param name="value">The value.</param>
-        void SetDrawMarginDepth(double value);
-
+        /// <param name="previousDrawn">The previous drawn.</param>
+        /// <param name="current">The current.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="chart">The chart.</param>
+        void DrawOrMove(ChartPoint3D previousDrawn, ChartPoint3D current, int index, ChartCore3D chart);
         /// <summary>
-        /// Maps the x axes.
+        /// Removes from view.
         /// </summary>
         /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapXAxes(ChartCore3D chart);
+        void RemoveFromView(ChartCore3D chart);
         /// <summary>
-        /// Maps the y axes.
+        /// Called when [hover].
         /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapYAxes(ChartCore3D chart);
+        /// <param name="point">The point.</param>
+        void OnHover(ChartPoint3D point);
         /// <summary>
-        /// Maps the z axes.
+        /// Called when [hover leave].
         /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapZAxes(ChartCore3D chart);
-
+        /// <param name="point">The point.</param>
+        void OnHoverLeave(ChartPoint3D point);
     }
+
 }

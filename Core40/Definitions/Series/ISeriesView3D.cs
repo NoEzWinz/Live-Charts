@@ -1,4 +1,4 @@
-﻿//The MIT License(MIT)
+//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -21,52 +21,58 @@
 //SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using LiveCharts.Charts;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Dtos;
-using LiveCharts.Events;
+using LiveCharts.Definitions.Points;
 
-namespace LiveCharts.Definitions.Charts
+namespace LiveCharts.Definitions.Series
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IChartView3D : IChartView
+    public interface ISeriesView3D : ISeriesView
     {
+
+
         /// <summary>
-        /// Gets the model.
+        /// Gets or sets the model.
         /// </summary>
         /// <value>
         /// The model.
         /// </value>
-        new  ChartCore3D  Model { get; }
+        new SeriesAlgorithm3D Model { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scales y at.
+        /// </summary>
+        /// <value>
+        /// The scales z at.
+        /// </value>
+        int ScalesZAt { get; set; }
+        
+
+        /// <summary>
+        /// Gets or sets the label point.
+        /// </summary>
+        /// <value>
+        /// The label point.
+        /// </value>
+        new Func<ChartPoint3D, string> LabelPoint { get; set; }
+
+
 
 
         /// <summary>
-        /// Sets the depth of the draw margin.
+        /// Gets the point view.
         /// </summary>
-        /// <param name="value">The value.</param>
-        void SetDrawMarginDepth(double value);
-
-        /// <summary>
-        /// Maps the x axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
+        /// <param name="point">The point.</param>
+        /// <param name="label">The label.</param>
         /// <returns></returns>
-        List<AxisCore> MapXAxes(ChartCore3D chart);
-        /// <summary>
-        /// Maps the y axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapYAxes(ChartCore3D chart);
-        /// <summary>
-        /// Maps the z axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapZAxes(ChartCore3D chart);
+        IChartPointView3D GetPointView(ChartPoint3D point, string label);
+        
 
+        /// <summary>
+        /// Gets the label point formatter.
+        /// </summary>
+        /// <returns></returns>
+        new Func<ChartPoint3D, string> GetLabelPointFormatter();
     }
 }

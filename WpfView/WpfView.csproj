@@ -77,6 +77,7 @@
     <Compile Include="Components\IFondeable.cs" />
     <Compile Include="Components\ThreadAccess.cs" />
     <Compile Include="DateAxis.cs" />
+    <Compile Include="DefaultAxes3D.cs" />
     <Compile Include="FinancialColoringRule.cs" />
     <Compile Include="IChartLegend.cs" />
     <Compile Include="IChartTooltip.cs" />

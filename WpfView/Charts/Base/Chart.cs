@@ -255,7 +255,7 @@ namespace LiveCharts.Wpf.Charts.Base
 
         private AxesCollection PreviousXAxis { get; set; }
         private AxesCollection PreviousYAxis { get; set; }
-        private static Random Randomizer { get; set; }
+        protected static Random Randomizer { get; set; }
         private SeriesCollection LastKnownSeriesCollection { get; set; }
 
         /// <summary>
@@ -1444,7 +1444,7 @@ namespace LiveCharts.Wpf.Charts.Base
             CallChartUpdater(true)(o, e);
         }
 
-        private static PropertyChangedCallback AxisInstancechanged(AxisOrientation orientation)
+        protected static PropertyChangedCallback AxisInstancechanged(AxisOrientation orientation)
         {
             return (o, a) =>
             {

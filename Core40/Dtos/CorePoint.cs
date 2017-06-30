@@ -20,6 +20,8 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+using System.Security.Policy;
+
 namespace LiveCharts.Dtos
 {
     /// <summary>
@@ -41,12 +43,26 @@ namespace LiveCharts.Dtos
         /// <summary>
         /// Initializes a new instance of CorePoint
         /// </summary>
+        /// <param name="x">x coordinate</param>
+        /// <param name="y">y coordinate</param>
+        public CorePoint(double x, double y, double z) : this()
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of CorePoint
+        /// </summary>
         /// <param name="point">source pont</param>
         public CorePoint(CorePoint point) : this()
         {
             X = point.X;
             Y = point.Y;
+            Z = point.Z;
         }
+
 
         /// <summary>
         /// X coordinate
@@ -56,6 +72,11 @@ namespace LiveCharts.Dtos
         /// Y coordinate
         /// </summary>
         public double Y { get; set; }
+        /// <summary>
+        /// Z coordinate
+        /// </summary>
+        public double Z { get; set; }
+
 
         /// <summary>
         /// Sums every property between 2 given points
@@ -65,7 +86,7 @@ namespace LiveCharts.Dtos
         /// <returns></returns>
         public static CorePoint operator +(CorePoint p1, CorePoint p2)
         {
-            return new CorePoint(p1.X + p2.X, p1.Y + p2.Y);
+            return new CorePoint(p1.X + p2.X, p1.Y + p2.Y, p1.Z + p2.Z);
         }
 
         /// <summary>
@@ -76,7 +97,7 @@ namespace LiveCharts.Dtos
         /// <returns></returns>
         public static CorePoint operator -(CorePoint p1, CorePoint p2)
         {
-            return new CorePoint(p1.X - p2.X, p1.Y - p2.Y);
+            return new CorePoint(p1.X - p2.X, p1.Y - p2.Y, p1.Z - p2.Z);
         }
     }
 }
