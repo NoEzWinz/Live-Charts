@@ -32,7 +32,7 @@ namespace LiveCharts.Wpf
     /// <summary>
     /// The Cartesian chart can plot any series with x and y coordinates
     /// </summary>
-    public class CartesianChart3D : Chart, ICartesianChart
+    public class CartesianChart3D : Chart3D, ICartesianChart3D
     {
         /// <summary>
         /// Initializes a new instance of CartesianChart class
@@ -40,36 +40,36 @@ namespace LiveCharts.Wpf
         public CartesianChart3D()
         {
             var freq = DisableAnimations ? TimeSpan.FromMilliseconds(10) : AnimationsSpeed;
-            var updater = new Components.ChartUpdater(freq);
-            ChartCoreModel = new CartesianChartCore(this, updater);
+            var updater = new Components.ChartUpdater3D(freq);
+            ChartCoreModel = new CartesianChartCore3D(this, updater);
 
             SetCurrentValue(SeriesProperty,
                 DesignerProperties.GetIsInDesignMode(this)
                     ? GetDesignerModeCollection()
-                    : new SeriesCollection());
+                    : new SeriesCollection3D());
 
-            SetCurrentValue(VisualElementsProperty, new VisualElementsCollection());
+            SetCurrentValue(VisualElementsProperty, new VisualElementsCollection3D());
         }
 
         /// <summary>
         /// The visual elements property
         /// </summary>
         public static readonly DependencyProperty VisualElementsProperty = DependencyProperty.Register(
-            "VisualElements", typeof (VisualElementsCollection), typeof (CartesianChart),
-            new PropertyMetadata(default(VisualElementsCollection), OnVisualCollectionChanged));
+            "VisualElements", typeof (VisualElementsCollection3D), typeof (CartesianChart3D),
+            new PropertyMetadata(default(VisualElementsCollection3D), OnVisualCollectionChanged));
 
         /// <summary>
         /// Gets or sets the collection of visual elements in the chart, a visual element display another UiElement in the chart.
         /// </summary>
-        public VisualElementsCollection VisualElements
+        public VisualElementsCollection3D VisualElements
         {
-            get { return (VisualElementsCollection) GetValue(VisualElementsProperty); }
+            get { return (VisualElementsCollection3D) GetValue(VisualElementsProperty); }
             set { SetValue(VisualElementsProperty, value); }
         }
 
         private static void OnVisualCollectionChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var chart = (CartesianChart)dependencyObject;
+            var chart = (CartesianChart3D)dependencyObject;
 
             if (chart.VisualElements != null) chart.VisualElements.Chart = chart.Model;
         }

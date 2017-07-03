@@ -30,12 +30,12 @@ namespace LiveCharts.Wpf
     /// <summary>
     /// Defines an Axis.Separator, this class customizes the separator of an axis.
     /// </summary>
-    public class Separator : FrameworkElement, ISeparatorView
+    public class Separator3D : FrameworkElement, ISeparator3DView
     {
         /// <summary>
         /// Initializes a new instance of Separator class
         /// </summary>
-        public Separator()
+        public Separator3D()
         {
             SetCurrentValue(IsEnabledProperty, true);
             SetCurrentValue(StrokeProperty, new SolidColorBrush(Color.FromRgb(240, 240, 240)));
@@ -45,8 +45,8 @@ namespace LiveCharts.Wpf
         /// <summary>
         /// Gets the chart the own the separator
         /// </summary>
-        public ChartCore Chart { get; set; }
-        private AxisCore Axis { get; set; }
+        public ChartCore3D Chart { get; set; }
+        private AxisCore3D Axis { get; set; }
 
         #region Dependency Properties
 
@@ -54,7 +54,7 @@ namespace LiveCharts.Wpf
         /// The stroke property
         /// </summary>
         public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
-            "Stroke", typeof (Brush), typeof (Separator),
+            "Stroke", typeof (Brush), typeof (Separator3D),
             new PropertyMetadata(default(Brush), CallChartUpdater()));
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace LiveCharts.Wpf
         /// The stroke thickness property
         /// </summary>
         public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(
-            "StrokeThickness", typeof (double), typeof (Separator),
+            "StrokeThickness", typeof (double), typeof (Separator3D),
             new PropertyMetadata(default(double), CallChartUpdater()));
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace LiveCharts.Wpf
         /// The stroke dash array property
         /// </summary>
         public static readonly DependencyProperty StrokeDashArrayProperty = DependencyProperty.Register(
-            "StrokeDashArray", typeof (DoubleCollection), typeof (Separator),
+            "StrokeDashArray", typeof (DoubleCollection), typeof (Separator3D),
             new PropertyMetadata(default(DoubleCollection), CallChartUpdater()));
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace LiveCharts.Wpf
         /// The step property
         /// </summary>
         public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
-            "Step", typeof (double), typeof (Separator),
+            "Step", typeof (double), typeof (Separator3D),
             new PropertyMetadata(double.NaN, CallChartUpdater()));
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace LiveCharts.Wpf
         /// The actual step property
         /// </summary>
         public static readonly DependencyProperty ActualStepProperty = DependencyProperty.Register(
-            "ActualStep", typeof(double), typeof(Separator), new PropertyMetadata(default(double)));
+            "ActualStep", typeof(double), typeof (Separator3D), new PropertyMetadata(default(double)));
         /// <summary>
         /// Gets the actual step.
         /// </summary>
@@ -134,7 +134,7 @@ namespace LiveCharts.Wpf
         /// The axis orientation property
         /// </summary>
         public static readonly DependencyProperty AxisOrientationProperty = DependencyProperty.Register(
-            "AxisOrientation", typeof(AxisOrientation), typeof(Separator), new PropertyMetadata(default(AxisOrientation)));
+            "AxisOrientation", typeof(AxisOrientation), typeof (Separator3D), new PropertyMetadata(default(AxisOrientation)));
         /// <summary>
         /// Gets or sets the element orientation ind the axis
         /// </summary>
@@ -152,19 +152,18 @@ namespace LiveCharts.Wpf
         /// <param name="axis">The axis.</param>
         /// <param name="source">The source.</param>
         /// <returns></returns>
-        public SeparatorConfigurationCore AsCoreElement(AxisCore axis, AxisOrientation source)
+        public SeparatorConfigurationCore3D AsCoreElement(AxisCore3D axis, AxisOrientation source)
         {
             AxisOrientation = source;
             Chart = axis.Chart;
             Axis = axis;
-            return new SeparatorConfigurationCore(axis)
+            return new SeparatorConfigurationCore3D(axis)
             {
                 IsEnabled = IsEnabled,
                 Step = Step,
                 Source = source
             };
         }
-
 
         private static PropertyChangedCallback CallChartUpdater(bool animate = false)
         {

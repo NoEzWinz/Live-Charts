@@ -9,6 +9,7 @@ using System.Windows.Data;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using Wpf.CartesianChart;
+using Wpf.CartesianChart.Series3D.Bar_Series;
 using Wpf.CartesianChart.BasicLine;
 using Wpf.CartesianChart.Basic_Bars;
 using Wpf.CartesianChart.Basic_Stacked_Bar;
@@ -85,6 +86,7 @@ namespace Wpf.Home
                     Name = "Basic Plots",
                     Items = new[]
                     {
+                         new SampleVm("Manhattan", typeof(ManhattanChart)),
                         new SampleVm("Lines", typeof(BasicLineExample)),
                         new SampleVm("Columns", typeof(BasicColumn)),
                         new SampleVm("Stacked Columns", typeof(StackedColumnExample)),

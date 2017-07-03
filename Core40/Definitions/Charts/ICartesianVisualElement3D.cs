@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,47 +20,65 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
+using LiveCharts.Charts;
 
-namespace LiveCharts
+namespace LiveCharts.Definitions.Charts
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public interface ICartesianVisualElement3D
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Gets or sets the x.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The x.
+        /// </value>
+        double X { get; set; }
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets or sets the y.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The y.
+        /// </value>
+        double Y { get; set; }
+        /// Gets or sets the z.
+        /// </summary>
+        /// <value>
+        /// The z.
+        /// </value>
+        double Z { get; set; }
         /// <summary>
-        /// Initializes the garbage collector
+        /// Gets or sets the axis x.
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
+        /// <value>
+        /// The axis x.
+        /// </value>
+        int AxisX { get; set; }
         /// <summary>
-        /// Removes all unnecessary points from the view
+        /// Gets or sets the axis y.
         /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The axis y.
+        /// </value>
+        int AxisY { get; set; }
         /// <summary>
-        /// Gets series that owns the values
+        /// Gets or sets the axis z.
         /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <value>
+        /// The axis z.
+        /// </value>
+        int AxisZ { get; set; }
+        /// <summary>
+        /// Adds the or move.
+        /// </summary>
+        /// <param name="chart">The chart.</param>
+        void AddOrMove(ChartCore3D chart);
+        /// <summary>
+        /// Removes the specified chart.
+        /// </summary>
+        /// <param name="chart">The chart.</param>
+        void Remove(ChartCore3D chart);
     }
 }

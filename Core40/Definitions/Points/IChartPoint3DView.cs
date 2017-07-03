@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,47 +20,56 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
+using LiveCharts.Charts;
+using LiveCharts.Dtos;
 
-namespace LiveCharts
+namespace LiveCharts.Definitions.Points
 {
+
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public interface IChartPoint3DView 
     {
-        /// <summary>
-        /// Forces values to calculate max, min and index data.
-        /// </summary>
-        void Initialize(ISeriesView seriesView);
 
 
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets a value indicating whether this instance is new.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
+        /// <value>
+        ///   <c>true</c> if this instance is new; otherwise, <c>false</c>.
+        /// </value>
+        bool IsNew { get; }
         /// <summary>
-        /// Initializes the garbage collector
+        /// Gets the valid area.
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
+        /// <value>
+        /// The valid area.
+        /// </value>
+        CoreCube ValidArea { get; }
         /// <summary>
-        /// Removes all unnecessary points from the view
+        /// Draws the or move.
         /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
+        /// <param name="previousDrawn">The previous drawn.</param>
+        /// <param name="current">The current.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="chart">The chart.</param>
+        void DrawOrMove(ChartPoint3D previousDrawn, ChartPoint3D current, int index, ChartCore3D chart);
         /// <summary>
-        /// Gets series that owns the values
+        /// Removes from view.
         /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <param name="chart">The chart.</param>
+        void RemoveFromView(ChartCore3D chart);
+        /// <summary>
+        /// Called when [hover].
+        /// </summary>
+        /// <param name="point">The point.</param>
+        void OnHover(ChartPoint3D point);
+        /// <summary>
+        /// Called when [hover leave].
+        /// </summary>
+        /// <param name="point">The point.</param>
+        void OnHoverLeave(ChartPoint3D point);
     }
+
 }

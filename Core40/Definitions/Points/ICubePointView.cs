@@ -20,47 +20,29 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
+using LiveCharts.Dtos;
 
-namespace LiveCharts
+namespace LiveCharts.Definitions.Points
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    /// <seealso cref="LiveCharts.Definitions.Points.IChartPoint3DView" />
+    public interface ICubePointView : IChartPoint3DView
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Gets or sets the data.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The data.
+        /// </value>
+        CoreCube Data { get; set; }
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets or sets the zero reference.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Initializes the garbage collector
-        /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
-        /// <summary>
-        /// Removes all unnecessary points from the view
-        /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Gets series that owns the values
-        /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <value>
+        /// The zero reference.
+        /// </value>
+        double ZeroReference { get; set; }
     }
 }

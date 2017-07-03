@@ -29,7 +29,7 @@ namespace LiveCharts.Wpf
     /// <summary>
     /// Stores a collection of axis.
     /// </summary>
-    public class AxesCollection3D : NoisyCollection<Axis>
+    public class AxesCollection3D : NoisyCollection<Axis3D>
     {
         /// <summary>
         /// Initializes a new instance of AxisCollection class
@@ -47,7 +47,7 @@ namespace LiveCharts.Wpf
         /// </value>
         public Chart3D Chart3D { get; internal set; }
 
-        private void OnNoisyCollectionChanged(IEnumerable<Axis> oldItems, IEnumerable<Axis> newItems)
+        private void OnNoisyCollectionChanged(IEnumerable<Axis3D> oldItems, IEnumerable<Axis3D> newItems)
         {
             if(Chart3D != null && Chart3D.Model != null)
                 Chart3D.Model.Updater.Run();

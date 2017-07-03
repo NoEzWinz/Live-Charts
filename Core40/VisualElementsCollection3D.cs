@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,59 +20,38 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System;
-using LiveCharts.Definitions.Points;
+using System.Collections.Generic;
+using LiveCharts.Charts;
+using LiveCharts.Definitions.Charts;
+using LiveCharts.Helpers;
 
-namespace LiveCharts.Definitions.Series
+namespace LiveCharts
 {
     /// <summary>
-    /// 
+    /// Defines a collection of items to be added in a cartesian chart
     /// </summary>
-    public interface ISeriesView3D : ISeriesView
+    public class VisualElementsCollection3D : NoisyCollection<ICartesianVisualElement3D>
     {
-
+        /// <summary>
+        /// Initializes a new instance of VisualElementsCollection
+        /// </summary>
+        public VisualElementsCollection3D()
+        {
+            NoisyCollectionChanged += OnNoisyCollectionChanged;
+        }
 
         /// <summary>
-        /// Gets or sets the model.
+        /// Gets or sets the chart.
         /// </summary>
         /// <value>
-        /// The model.
+        /// The chart.
         /// </value>
-        new SeriesAlgorithm3D Model { get; set; }
+        public ChartCore3D Chart { get; set; }
 
-        /// <summary>
-        /// Gets or sets the scales y at.
-        /// </summary>
-        /// <value>
-        /// The scales z at.
-        /// </value>
-        int ScalesZAt { get; set; }
-        
-
-        /// <summary>
-        /// Gets or sets the label point.
-        /// </summary>
-        /// <value>
-        /// The label point.
-        /// </value>
-        new Func<ChartPoint3D, string> LabelPoint { get; set; }
-
-
-
-
-        /// <summary>
-        /// Gets the point view.
-        /// </summary>
-        /// <param name="point">The point.</param>
-        /// <param name="label">The label.</param>
-        /// <returns></returns>
-        IChartPointView3D GetPointView(ChartPoint3D point, string label);
-        
-
-        /// <summary>
-        /// Gets the label point formatter.
-        /// </summary>
-        /// <returns></returns>
-        new Func<ChartPoint3D, string> GetLabelPointFormatter();
+        private void OnNoisyCollectionChanged(IEnumerable<ICartesianVisualElement3D> oldItems, IEnumerable<ICartesianVisualElement3D> newItems)
+        {
+            if (oldItems != null) foreach (var oltItem in oldItems) oltItem.Remove(Chart);
+            if (newItems != null) foreach (var newItem in newItems) newItem.AddOrMove(Chart);
+        }
     }
 }

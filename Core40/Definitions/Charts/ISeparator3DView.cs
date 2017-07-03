@@ -20,48 +20,38 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using LiveCharts.Charts;
-using LiveCharts.Dtos;
-
-namespace LiveCharts.Definitions.Points
+namespace LiveCharts.Definitions.Charts
 {
-
     /// <summary>
     /// 
     /// </summary>
-    public interface IChartPointView3D: IChartPointView
+    public interface ISeparator3DView
     {
-
         /// <summary>
-        /// Gets the valid area.
+        /// Gets or sets a value indicating whether this instance is enabled.
         /// </summary>
         /// <value>
-        /// The valid area.
+        /// <c>true</c> if this instance is enabled; otherwise, <c>false</c>.
         /// </value>
-       new  CoreCube ValidArea { get; }
+        bool IsEnabled { get; set; }
         /// <summary>
-        /// Draws the or move.
+        /// Gets or sets separator step, this means the value between each line, use double.NaN for auto.
         /// </summary>
-        /// <param name="previousDrawn">The previous drawn.</param>
-        /// <param name="current">The current.</param>
-        /// <param name="index">The index.</param>
-        /// <param name="chart">The chart.</param>
-        void DrawOrMove(ChartPoint3D previousDrawn, ChartPoint3D current, int index, ChartCore3D chart);
+        double Step { get; set; }
         /// <summary>
-        /// Removes from view.
+        /// Gets the axis orientation.
         /// </summary>
-        /// <param name="chart">The chart.</param>
-        void RemoveFromView(ChartCore3D chart);
-        /// <summary>
-        /// Called when [hover].
-        /// </summary>
-        /// <param name="point">The point.</param>
-        void OnHover(ChartPoint3D point);
-        /// <summary>
-        /// Called when [hover leave].
-        /// </summary>
-        /// <param name="point">The point.</param>
-        void OnHoverLeave(ChartPoint3D point);
-    }
+        /// <value>
+        /// The axis orientation.
+        /// </value>
+        AxisOrientation AxisOrientation { get; }
 
+        /// <summary>
+        /// Ases the core element.
+        /// </summary>
+        /// <param name="axis">The axis.</param>
+        /// <param name="source">The source.</param>
+        /// <returns></returns>
+        SeparatorConfigurationCore3D AsCoreElement(AxisCore3D axis, AxisOrientation source);
+    }
 }

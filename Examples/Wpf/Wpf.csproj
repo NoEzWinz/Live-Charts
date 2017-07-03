@@ -88,6 +88,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CartesianChart\Series3D\Bar Series\ManhattanChart.xaml.cs">
+      <DependentUpon>ManhattanChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CartesianChart\Chart to Image\ChartToImageSample.xaml.cs">
       <DependentUpon>ChartToImageSample.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
     </Compile>
     <Compile Include="Home\SampleGroupVm.cs" />
     <Compile Include="Home\SampleVm.cs" />
+    <Page Include="CartesianChart\Series3D\Bar Series\ManhattanChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CartesianChart\Basic Bars\BasicColumn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

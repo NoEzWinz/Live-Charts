@@ -20,47 +20,22 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
+using LiveCharts.Definitions.Charts;
 
 namespace LiveCharts
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public class SeparatorElementCore3D  : SeparatorElementCore
     {
+        
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Gets or sets the view.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
-        /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Initializes the garbage collector
-        /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
-        /// <summary>
-        /// Removes all unnecessary points from the view
-        /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Gets series that owns the values
-        /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <value>
+        /// The view.
+        /// </value>
+        public new ISeparatorElement3DView View { get; set; }
     }
 }

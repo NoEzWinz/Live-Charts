@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -21,46 +21,31 @@
 //SOFTWARE.
 
 using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
 using LiveCharts.Helpers;
 
-namespace LiveCharts
+namespace LiveCharts.Wpf
 {
     /// <summary>
-    /// 
+    /// The SectionsCollection3D class holds a collection of Axis3D.Sections
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public class SectionsCollection3D : NoisyCollection<AxisSection3D>
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Initializes a new instance of SectionsCollection instance
         /// </summary>
-        void Initialize(ISeriesView seriesView);
+        public SectionsCollection3D()
+        {
+            NoisyCollectionChanged += OnNoisyCollectionChanged;
+        }
 
+        private static void OnNoisyCollectionChanged(IEnumerable<AxisSection3D> oldItems, IEnumerable<AxisSection3D> newItems)
+        {
+            if (oldItems == null) return;
 
-        /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
-        /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Initializes the garbage collector
-        /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
-        /// <summary>
-        /// Removes all unnecessary points from the view
-        /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Gets series that owns the values
-        /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+            foreach (var oldSection in oldItems)
+            {
+                oldSection.Remove();
+            }
+        }
     }
 }

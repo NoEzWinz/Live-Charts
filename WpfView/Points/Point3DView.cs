@@ -1,6 +1,4 @@
-﻿//The MIT License(MIT)
-
-//Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
+//copyright(c) 2016 Alberto Rodriguez
 
 //Permission is hereby granted, free of charge, to any person obtaining a copy
 //of this software and associated documentation files (the "Software"), to deal
@@ -20,49 +18,41 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using LiveCharts.Definitions.Charts;
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Shapes;
+using LiveCharts.Charts;
 using LiveCharts.Definitions.Points;
-using LiveCharts.Definitions.Series;
 using LiveCharts.Dtos;
 
-namespace LiveCharts
+namespace LiveCharts.Wpf.Points
 {
-    /// <summary>
-    /// Defines a point in the chart
-    /// </summary>
-    public class ChartPoint3D : ChartPoint
+    internal class Point3DView : IChartPoint3DView
     {
+        public Shape HoverShape { get; set; }
+        public ContentControl DataLabel { get; set; }
+        public bool IsNew { get; set; }
+        public CoreCube ValidArea { get; internal set; }
 
-        #region Cartesian 
+        public virtual void DrawOrMove(ChartPoint3D previousDrawn, ChartPoint3D current, int index, ChartCore3D chart)
+        {
+            throw new NotImplementedException();
+        }
 
-        /// <summary>
-        /// Gets the Z point value
-        /// </summary>
-        public double Z { get; internal set; }
+        public virtual void RemoveFromView(ChartCore3D chart)
+        {
+            throw new NotImplementedException();
+        }
 
-        #endregion
+        public virtual void OnHover(ChartPoint3D point)
+        {
+            
+        }
 
-
-        /// <summary>
-        /// Gets the series where the point belongs to
-        /// </summary>
-        public new ISeries3DView SeriesView { get; internal set; }
-
-        /// <summary >
-        /// Gets or sets the view of this chart point
-        /// </summary>
-        public new IChartPoint3DView View { get; internal set; }
-
-
-
-        /// <summary>
-        /// Gets the chart view.
-        /// </summary>
-        /// <value>
-        /// The chart view.
-        /// </value>
-        public new IChart3DView ChartView { get { return SeriesView.Model.Chart.View; } }
-
-
+        public virtual void OnHoverLeave(ChartPoint3D point)
+        {
+            
+        }
     }
 }

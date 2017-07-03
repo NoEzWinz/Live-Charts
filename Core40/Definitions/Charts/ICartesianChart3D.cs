@@ -20,53 +20,20 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using LiveCharts.Charts;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Dtos;
-using LiveCharts.Events;
-
 namespace LiveCharts.Definitions.Charts
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IChartView3D : IChartView
+    /// <seealso cref="LiveCharts.Definitions.Charts.IChartView" />
+    public interface ICartesianChart3D : IChart3DView
     {
         /// <summary>
-        /// Gets the model.
+        /// Gets or sets the visual elements.
         /// </summary>
         /// <value>
-        /// The model.
+        /// The visual elements.
         /// </value>
-        new  ChartCore3D  Model { get; }
-
-
-        /// <summary>
-        /// Sets the depth of the draw margin.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        void SetDrawMarginDepth(double value);
-
-        /// <summary>
-        /// Maps the x axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapXAxes(ChartCore3D chart);
-        /// <summary>
-        /// Maps the y axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapYAxes(ChartCore3D chart);
-        /// <summary>
-        /// Maps the z axes.
-        /// </summary>
-        /// <param name="chart">The chart.</param>
-        /// <returns></returns>
-        List<AxisCore> MapZAxes(ChartCore3D chart);
-
+        VisualElementsCollection3D VisualElements { get; set; }
     }
 }

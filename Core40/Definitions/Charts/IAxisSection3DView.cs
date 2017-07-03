@@ -20,102 +20,79 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using LiveCharts.Charts;
-using LiveCharts.Definitions.Series;
-
-namespace LiveCharts
+namespace LiveCharts.Definitions.Charts
 {
     /// <summary>
     /// 
     /// </summary>
-    public abstract class SeriesAlgorithm3D
+    public interface IAxisSection3DView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SeriesAlgorithm3D"/> class.
+        /// Gets or sets the model.
         /// </summary>
-        /// <param name="view">The view.</param>
-        protected SeriesAlgorithm3D(ISeries3DView view)
-        {
-            View = view;
-        }
+        /// <value>
+        /// The model.
+        /// </value>
+        AxisSectionCore3D Model { get; set; }
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>
+        /// The value.
+        /// </value>
+        double Value { get; set; }
+        /// <summary>
+        /// Gets or sets the width of the section.
+        /// </summary>
+        /// <value>
+        /// The width of the section.
+        /// </value>
+        double SectionWidth { get; set; }
+        /// <summary>
+        /// Gets or sets the section offset.
+        /// </summary>
+        /// <value>
+        /// The section offset.
+        /// </value>
+        double SectionOffset { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="IAxisSectionView"/> is draggable.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if draggable; otherwise, <c>false</c>.
+        /// </value>
+        bool Draggable { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether the section is animated
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [disable animations]; otherwise, <c>false</c>.
+        /// </value>
+        bool DisableAnimations { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether the section should display a label that displays its current value.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [data label]; otherwise, <c>false</c>.
+        /// </value>
+        bool DataLabel { get; set; }
 
         /// <summary>
-        /// Gets or sets the view.
+        /// Draws the or move.
         /// </summary>
-        /// <value>
-        /// The view.
-        /// </value>
-        public ISeries3DView View { get; set; }
+        /// <param name="source">The source.</param>
+        /// <param name="axis">The axis.</param>
+        void DrawOrMove(AxisOrientation source, int axis);
         /// <summary>
-        /// Gets or sets the chart.
+        /// Removes this instance.
         /// </summary>
-        /// <value>
-        /// The chart.
-        /// </value>
-        public ChartCore3D Chart { get; set; }
+        void Remove();
         /// <summary>
-        /// Gets or sets the series collection.
+        /// Ases the core element.
         /// </summary>
-        /// <value>
-        /// The series collection.
-        /// </value>
-        public SeriesCollection3D SeriesCollection { get; set; }
-        /// <summary>
-        /// Gets or sets the series orientation.
-        /// </summary>
-        /// <value>
-        /// The series orientation.
-        /// </value>
-        public SeriesOrientation SeriesOrientation { get; set; }
-        /// <summary>
-        /// Gets or sets the title.
-        /// </summary>
-        /// <value>
-        /// The title.
-        /// </value>
-        public string Title { get; set; }
-        /// <summary>
-        /// Gets the preferred selection mode.
-        /// </summary>
-        /// <value>
-        /// The preferred selection mode.
-        /// </value>
-        public TooltipSelectionMode PreferredSelectionMode { get; internal set; }
-
-        /// <summary>
-        /// Gets the current x axis.
-        /// </summary>
-        /// <value>
-        /// The current x axis.
-        /// </value>
-        public AxisCore3D CurrentXAxis
-        {
-            get { return Chart.AxisX[View.ScalesXAt]; }
-        }
-        /// <summary>
-        /// Gets the current y axis.
-        /// </summary>
-        /// <value>
-        /// The current y axis.
-        /// </value>
-        public AxisCore3D CurrentYAxis
-        {
-            get { return Chart.AxisY[View.ScalesYAt]; }
-        }
-        /// <summary>
-        /// Gets the current z axis.
-        /// </summary>
-        /// <value>
-        /// The current z axis.
-        /// </value>
-        public AxisCore3D CurrentZAxis
-        {
-            get { return Chart.AxisZ[View.ScalesZAt]; }
-        }
-
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        public abstract void Update();
+        /// <param name="axis">The axis.</param>
+        /// <param name="source">The source.</param>
+        /// <returns></returns>
+        AxisSectionCore3D AsCoreElement(AxisCore3D axis, AxisOrientation source);
     }
 }

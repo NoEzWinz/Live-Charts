@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,47 +20,56 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
-
-namespace LiveCharts
+namespace LiveCharts.Definitions.Series
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public interface ICartesianSeries3D
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Gets the view.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
+        /// <value>
+        /// The view.
+        /// </value>
+        ISeries3DView View { get; }
 
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets the minimum x.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
+        /// <param name="axis">The axis.</param>
         /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
+        double GetMinX(AxisCore3D axis);
         /// <summary>
-        /// Initializes the garbage collector
+        /// Gets the maximum x.
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
+        /// <param name="axis">The axis.</param>
+        /// <returns></returns>
+        double GetMaxX(AxisCore3D axis);
         /// <summary>
-        /// Removes all unnecessary points from the view
+        /// Gets the minimum y.
         /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
+        /// <param name="axis">The axis.</param>
+        /// <returns></returns>
+        double GetMinY(AxisCore3D axis);
         /// <summary>
-        /// Gets series that owns the values
+        /// Gets the maximum y.
         /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <param name="axis">The axis.</param>
+        /// <returns></returns>
+        double GetMaxY(AxisCore3D axis);
+        /// <summary>
+        /// Gets the minimum z.
+        /// </summary>
+        /// <param name="axis">The axis.</param>
+        /// <returns></returns>
+        double GetMinZ(AxisCore3D axis);
+        /// <summary>
+        /// Gets the maximum z.
+        /// </summary>
+        /// <param name="axis">The axis.</param>
+        /// <returns></returns>
+        double GetMaxZ(AxisCore3D axis);
     }
 }

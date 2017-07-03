@@ -30,12 +30,14 @@ namespace LiveCharts
     /// 
     /// </summary>
     /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public interface IChartValues3D : INoisyCollection
     {
+
+
         /// <summary>
         /// Forces values to calculate max, min and index data.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
+        void Initialize(ISeries3DView seriesView);
 
 
         /// <summary>
@@ -43,24 +45,22 @@ namespace LiveCharts
         /// </summary>
         /// <param name="seriesView">The series view</param>
         /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
+        IEnumerable<ChartPoint3D> GetPoints(ISeries3DView seriesView);
 
-
+    
         /// <summary>
         /// Initializes the garbage collector
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
+        void InitializeStep(ISeries3DView seriesView);
         /// <summary>
         /// Removes all unnecessary points from the view
         /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
+        void CollectGarbage(ISeries3DView seriesView);
 
 
         /// <summary>
         /// Gets series that owns the values
         /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        PointTracker3D GetTracker(ISeries3DView view);
     }
 }

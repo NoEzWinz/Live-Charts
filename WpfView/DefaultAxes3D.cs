@@ -34,7 +34,7 @@ namespace LiveCharts.Wpf
         /// </summary>
         public static AxesCollection3D DefaultAxis
         {
-            get { return new AxesCollection3D {new Axis()}; }
+            get { return new AxesCollection3D {new Axis3D()}; }
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace LiveCharts.Wpf
             {
                 return new AxesCollection3D
                 {
-                    new Axis
+                    new Axis3D
                     {
                         IsEnabled = false,
                         Separator = CleanSeparator
@@ -64,7 +64,7 @@ namespace LiveCharts.Wpf
             {
                 return new AxesCollection3D
                 {
-                    new Axis
+                    new Axis3D
                     {
                         IsEnabled = true,
                         Separator = CleanSeparator
@@ -81,11 +81,11 @@ namespace LiveCharts.Wpf
         /// <value>
         /// The clean separator.
         /// </value>
-        public static Separator CleanSeparator
+        public static Separator3D CleanSeparator
         {
             get
             {
-                return new Separator
+                return new Separator3D
                 {
                     Visibility = Visibility.Collapsed
                 };

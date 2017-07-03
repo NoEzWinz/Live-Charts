@@ -45,6 +45,7 @@ namespace LiveCharts.Dtos
         /// </summary>
         /// <param name="x">x coordinate</param>
         /// <param name="y">y coordinate</param>
+        /// <param name="z">z coordinate</param>
         public CorePoint(double x, double y, double z) : this()
         {
             X = x;

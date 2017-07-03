@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,47 +20,53 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
+using LiveCharts.Charts;
+using LiveCharts.Definitions.Charts;
 
 namespace LiveCharts
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public class AxisSectionCore3D
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Initializes a new instance of the <see cref="AxisSectionCore3D"/> class.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
-
+        /// <param name="view">The view.</param>
+        /// <param name="chart">The chart.</param>
+        public AxisSectionCore3D(IAxisSection3DView view, ChartCore3D chart)
+        {
+            View = view;
+            Chart = chart;
+        }
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets or sets the view.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The view.
+        /// </value>
+        public IAxisSection3DView View { get; set; }
         /// <summary>
-        /// Initializes the garbage collector
+        /// Gets or sets the source.
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
+        /// <value>
+        /// The source.
+        /// </value>
+        public AxisOrientation Source { get; set; }
         /// <summary>
-        /// Removes all unnecessary points from the view
+        /// Gets or sets the index of the axis.
         /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The index of the axis.
+        /// </value>
+        public int AxisIndex { get; set; }
         /// <summary>
-        /// Gets series that owns the values
+        /// Gets or sets the chart.
         /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <value>
+        /// The chart.
+        /// </value>
+        public ChartCore3D Chart { get; set; }
     }
 }

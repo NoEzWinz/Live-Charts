@@ -20,47 +20,45 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
-
 namespace LiveCharts
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    public class SeparatorConfigurationCore3D
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Initializes a new instance of the <see cref="SeparatorConfigurationCore3D"/> class.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
+        /// <param name="axis">The axis.</param>
+        public SeparatorConfigurationCore3D(AxisCore3D axis)
+        {
+            Axis = axis;
+        }
 
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets or sets the axis.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
+        /// <value>
+        /// The axis.
+        /// </value>
+        public AxisCore3D Axis { get; set; }
 
         /// <summary>
-        /// Initializes the garbage collector
+        /// Gets or sets if separators are enabled (will be drawn)
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
+        public bool IsEnabled { get; set; }
+        /// <summary>
+        /// Gets or sets sepator step, this means the value between each line, use null for auto.
+        /// </summary>
+        public double Step { get; set; }
 
         /// <summary>
-        /// Removes all unnecessary points from the view
+        /// Gets or sets the source.
         /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Gets series that owns the values
-        /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <value>
+        /// The source.
+        /// </value>
+        public AxisOrientation Source { get; set; }
     }
 }

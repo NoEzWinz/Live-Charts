@@ -31,7 +31,17 @@ namespace LiveCharts.Defaults
             return axis.TopLimit; //Math.Ceiling(axis.TopLimit/axis.Magnitude)*axis.Magnitude;
         }
 
+        internal static double StretchMax(AxisCore3D axis)
+        {
+            return axis.TopLimit; //Math.Ceiling(axis.TopLimit/axis.Magnitude)*axis.Magnitude;
+        }
+
         internal static double StretchMin(AxisCore axis)
+        {
+            return axis.BotLimit; //Math.Floor(axis.BotLimit/axis.Magnitude)*axis.Magnitude;
+        }
+
+        internal static double StretchMin(AxisCore3D axis)
         {
             return axis.BotLimit; //Math.Floor(axis.BotLimit/axis.Magnitude)*axis.Magnitude;
         }
@@ -40,10 +50,19 @@ namespace LiveCharts.Defaults
         {
             return Math.Ceiling(axis.TopLimit/axis.Magnitude)*axis.Magnitude + 1;
         }
+        internal static double UnitRight(AxisCore3D axis)
+        {
+            return Math.Ceiling(axis.TopLimit / axis.Magnitude) * axis.Magnitude + 1;
+        }
 
         internal static double UnitLeft(AxisCore axis)
         {
             return Math.Floor(axis.BotLimit/axis.Magnitude)*axis.Magnitude - 1;
+        }
+
+        internal static double UnitLeft(AxisCore3D axis)
+        {
+            return Math.Floor(axis.BotLimit / axis.Magnitude) * axis.Magnitude - 1;
         }
 
         internal static double SeparatorMax(AxisCore axis)
@@ -51,14 +70,29 @@ namespace LiveCharts.Defaults
             return ((int) (axis.TopLimit/axis.S) + 1)*axis.S;
         }
 
+        internal static double SeparatorMax(AxisCore3D axis)
+        {
+            return ((int)(axis.TopLimit / axis.S) + 1) * axis.S;
+        }
+
+
         internal static double SeparatorMaxRounded(AxisCore axis)
         {
             return Math.Round((axis.TopLimit/axis.S) + 1, 0)*axis.S;
         }
 
+        internal static double SeparatorMaxRounded(AxisCore3D axis)
+        {
+            return Math.Round((axis.TopLimit / axis.S) + 1, 0) * axis.S;
+        }
+
         internal static double SeparatorMin(AxisCore axis)
         {
             return (((int) (axis.BotLimit/axis.S)) - 1)*axis.S;
+        }
+        internal static double SeparatorMin(AxisCore3D axis)
+        {
+            return (((int)(axis.BotLimit / axis.S)) - 1) * axis.S;
         }
     }
 }

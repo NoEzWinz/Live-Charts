@@ -1,4 +1,4 @@
-//The MIT License(MIT)
+﻿//The MIT License(MIT)
 
 //Copyright(c) 2016 Alberto Rodriguez & LiveCharts Contributors
 
@@ -20,47 +20,34 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-using System.Collections.Generic;
-using LiveCharts.Definitions.Series;
-using LiveCharts.Helpers;
-
-namespace LiveCharts
+namespace LiveCharts.Definitions.Series
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="LiveCharts.Helpers.INoisyCollection" />
-    public interface IChartValues : INoisyCollection
+    /// <seealso cref="LiveCharts.Definitions.Series.ISeries3DView" />
+    public interface IColumnSeries3DView : ISeries3DView
     {
         /// <summary>
-        /// Forces values to calculate max, min and index data.
+        /// Gets or sets the maximum width of the column.
         /// </summary>
-        void Initialize(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The maximum width of the column.
+        /// </value>
+        double MaxColumnWidth { get; set; }
         /// <summary>
-        /// Gets the current chart points in the view, the view is required as an argument, because an instance of IChartValues could hold many ISeriesView instances.
+        /// Gets or sets the column padding.
         /// </summary>
-        /// <param name="seriesView">The series view</param>
-        /// <returns></returns>
-        IEnumerable<ChartPoint> GetPoints(ISeriesView seriesView);
-
-
+        /// <value>
+        /// The column padding.
+        /// </value>
+        double ColumnPadding { get; set; }
         /// <summary>
-        /// Initializes the garbage collector
+        /// Gets or sets a value indicating whether [shares position].
         /// </summary>
-        void InitializeStep(ISeriesView seriesView);
-
-        /// <summary>
-        /// Removes all unnecessary points from the view
-        /// </summary>
-        void CollectGarbage(ISeriesView seriesView);
-
-
-        /// <summary>
-        /// Gets series that owns the values
-        /// </summary>
-        PointTracker GetTracker(ISeriesView view);
-
+        /// <value>
+        ///   <c>true</c> if [shares position]; otherwise, <c>false</c>.
+        /// </value>
+        bool SharesPosition { get; set; }
     }
 }
